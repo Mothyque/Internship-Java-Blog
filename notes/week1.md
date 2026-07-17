@@ -47,7 +47,7 @@ Understanding the Java `Throwable` hierarchy:
 ##### Practical Exercises
 To solidify these concepts, I wrote several code examples showcasing custom Lambda expressions, streams, and basic Concurrency using runnable tasks and threads.
 
-**[View Code](../projects/exercises/lambda_concurrency.java)** 
+**[View Code](../projects/exercises/Course1.java)** 
 
 ---
 
