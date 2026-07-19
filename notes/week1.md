@@ -62,3 +62,83 @@ After the introductory course, I started setting up my local development environ
 #####  Issues Encountered & Resolution
 *   **Problem:** I was unable to finalize the installation of Rancher Desktop and configure system environment variables for JDK/Maven because my corporate laptop restricted these actions.
 *   **Resolution:** The only blocker on Day 1 was not having administrator privileges. I resolved this by submitting an internal IT Support Ticket requesting local admin rights so I can complete the development environment setup tomorrow.
+
+---
+
+## Day 2
+
+### Course 2: Advanced Java Concepts & Streams Deep Dive
+
+#### Important aspects
+
+##### Generics
+Generics ensure that your code works with different data types while providing several compile-time benefits:
+*   **Compile-time type safety:** Catches type mismatches during compilation rather than throwing a `ClassCastException` at runtime.
+*   **Reduced casting:** Eliminates the need for explicit type casting when retrieving objects from collections.
+*   **Self-documenting APIs:** Clearly states what type of data a class or method expects and returns.
+*   **Reusable algorithms:** Allows you to implement data structures and logic (like sorting or searching) that work independently of the specific data type.
+
+##### Invariance & Wildcards
+*   **Invariance:** In Java, generics are invariant. This means `List<Integer>` is **not** a subtype of `List<Number>`, even though `Integer` extends `Number`. If it were allowed, you could accidentally insert a `Double` into a `List<Integer>`, breaking type safety.
+*   **Wildcards (?):** Invariance forces us to express our intent explicitly using wildcards when we need flexibility:
+    *   `? extends T` (**Producer Extends / PE**): Safe to **read** `T` from the structure, but unsafe to write to it.
+    *   `? super T` (**Consumer Super / CS**): Safe to **write** `T` into the structure, but unsafe to read from it (returns `Object`).
+
+##### Choosing the Right Data Structure
+*   **List:** Ordered collection that allows duplicates and provides positional (index-based) access.
+*   **Set:** Unordered collection that enforces a uniqueness constraint (no duplicates).
+*   **Map:** An association of unique keys to values.
+*   *Best Practice:* Switch to tree-based structures (like `TreeSet` or `TreeMap`) **only** when sorting or ordering queries are explicitly required, as they carry higher performance overhead ($O(\log n)$ vs $O(1)$).
+
+##### Equality & Hashing
+*   **The Contract:** If `a.equals(b)` is true, then `a.hashCode() == b.hashCode()` **must** always be true. If you override one, you must override the other.
+*   **Comparisons:** `==` compares memory addresses (reference equality), while `.equals()` compares the actual values/state of the objects.
+*   *Best Practice:* Use immutable fields as keys in a `Map`. Prefer **Java Records** (value objects) whenever possible because they generate clean, safe `equals()` and `hashCode()` implementations automatically.
+
+##### Java Records
+*   Shallowly **immutable** data carriers introduced to reduce boilerplate.
+*   Includes a **canonical constructor**, getters (named after the fields, e.g., `id()`, not `getId()`), `equals()`, `hashCode()`, and `toString()` out of the box.
+*   Does **not** have setters.
+*   **Limitations & Capabilities:** Cannot extend other classes (since they implicitly extend `java.lang.Record`), but they **can implement** interfaces. You can still add static fields, static methods, and extra instance methods.
+
+##### Date & Time API (java.time)
+*   `Instant`: Use when you need to compare, log, or order events globally (represents a single point on the timeline in UTC).
+*   `LocalDate`: Use when only the date matters (e.g., birthdays, holidays), completely independent of time zones.
+*   `ZonedDateTime`: Use when planning events or meetings for people in a specific time zone (handles Daylight Saving Time automatically).
+
+```java
+// Example: Creating a localized meeting in Bucharest
+LocalDateTime localMeeting = LocalDateTime.of(2026, 3, 28, 14, 0); 
+ZoneId bucharestZone = ZoneId.of("Europe/Bucharest");
+ZonedDateTime zonedMeeting = localMeeting.atZone(bucharestZone);
+System.out.println("Meeting in Bucharest: " + zonedMeeting);
+```
+
+##### Streams & Operations
+Streams are declarative pipelines used to process data collections efficiently through:
+*   **Transformations:** `map()`, `filter()`, `flatMap()`
+*   **Aggregations:** Grouping, counting, summing using collectors.
+*   **Consistency checks:** `allMatch()`, `anyMatch()`, `noneMatch()`
+
+Stream operations are strictly split into two categories:
+1.  **Intermediate Operations (Lazy):** They do not process elements immediately but set up the pipeline. Examples: `map`, `filter`, `flatMap`, `distinct`, `sorted`, `limit`, `skip`, `peek`, `takeWhile`, `dropWhile`.
+2.  **Terminal Operations (Eager):** They trigger the execution of the entire pipeline and close the stream. Examples: `collect`, `reduce`, `forEach`, `count`, `min`, `max`, `findFirst`, `findAny`, `toList`.
+*   *Optimization Tip:* Always place cheap operations (like `filter`) early in the pipeline, and expensive operations (like complex `map` functions) late, to minimize data processing overhead.
+
+##### Collectors & Parallel Streams
+*   `Collectors.toMap()` is sharp: If the stream encounters duplicate keys, it will throw an `IllegalStateException` unless you explicitly provide a **merge function** to decide whether to keep the first, keep the last, or combine the values.
+*   **Parallel Streams:** Run operations using multiple CPU cores via the Common ForkJoinPool. Use them **only** when dealing with large datasets, doing CPU-bound work, and when the stream operations are completely stateless and non-interfering.
+
+##### Practical Exercises
+To practice these concepts, I started working on the homework assignments focusing on advanced stream operations.
+
+**[View Code](../projects/exercises/Course2)** 
+
+---
+
+#### Setup & Environment
+
+Following up on Day 1's blocker, the internal IT ticket was resolved this morning, and I received local administrator privileges. 
+*   Successfully finalized the environment setup by installing **Rancher Desktop**.
+*   Configured all system environment variables for **JDK** and **Apache Maven**.
+*   Verified the installations through the terminal — all applications are now fully operational, and my development environment is 100% complete.  
