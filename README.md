@@ -17,12 +17,12 @@ Below is the complete index of my learning path. Click on any week to explore th
 
 | Timeline | Documentation Link | Key Topics & Focus | Hands-on Labs | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **Week 1** | 📝 [Week 1 Notes](notite/Saptamana-1.md) | OOP Principles, Errors vs Exceptions, Generics, Collections, Time API, Java Streams, Lambdas, Logging, Core Concurrency | 📂 [Course1.java](proiecte/Course1.java)<br>📂 [Course2 Folder](proiecte/Course2/)<br>📂 [Course3 Folder](proiecte/Course3/) | ✅ Completed |
-| **Week 2** | 📝 [Week 2 Notes](notite/Saptamana-2.md) | *Topics to be announced* | ⏳ Pending | 🚧 In Progress |
-| **Week 3** | 📝 [Week 3 Notes](notite/Saptamana-3.md) | *Topics to be announced* | ⏳ Pending | ⏳ Upcoming |
-| **Week 4** | 📝 [Week 4 Notes](notite/Saptamana-4.md) | *Topics to be announced* | ⏳ Pending | ⏳ Upcoming |
-| **Week 5** | 📝 [Week 5 Notes](notite/Saptamana-5.md) | *Topics to be announced* | ⏳ Pending | ⏳ Upcoming |
-| **Week 6** | 📝 [Week 6 Notes](notite/Saptamana-6.md) | *Topics to be announced* | ⏳ Pending | ⏳ Upcoming |
+| **Week 1** | 📝 [Week 1 Notes](notes/week1.md) | OOP Principles, Errors vs Exceptions, Generics, Collections, Time API, Java Streams, Lambdas, Logging, Core Concurrency | 📂 [Course1.java](projects/Course1.java)<br>📂 [Course2 Folder](projects/Course2/)<br>📂 [Course3 Folder](projects/Course3/) | ✅ Completed |
+| **Week 2** | 📝 [Week 2 Notes](notes/week2.md) | *Topics to be announced* | ⏳ Pending | 🚧 In Progress |
+| **Week 3** | 📝 [Week 3 Notes](notes/week3.md) | *Topics to be announced* | ⏳ Pending | ⏳ Upcoming |
+| **Week 4** | 📝 [Week 4 Notes](notes/week4.md) | *Topics to be announced* | ⏳ Pending | ⏳ Upcoming |
+| **Week 5** | 📝 [Week 5 Notes](notes/week5.md) | *Topics to be announced* | ⏳ Pending | ⏳ Upcoming |
+| **Week 6** | 📝 [Week 6 Notes](notes/week6.md) | *Topics to be announced* | ⏳ Pending | ⏳ Upcoming |
 
 ---
 
