@@ -17,7 +17,7 @@ Below is the complete index of my learning path. Click on any week to explore th
 
 | Timeline | Documentation Link | Key Topics & Focus | Hands-on Labs | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **Week 1** | 📝 [Week 1 Notes](notes/week1.md) | OOP Principles, Errors vs Exceptions, Generics, Collections, Time API, Java Streams, Lambdas, Logging, Core Concurrency | 📂 [Course1.java](projects/Course1.java)<br>📂 [Course2 Folder](projects/Course2/)<br>📂 [Course3 Folder](projects/Course3/) | ✅ Completed |
+| **Week 1** | 📝 [Week 1 Notes](notes/week1.md) | OOP Principles, Errors vs Exceptions, Generics, Collections, Time API, Java Streams, Lambdas, Logging, Core Concurrency | 📂 [Course1.java](projects/exercises/Course1.java)<br>📂 [Course2 Folder](projects/exercises/Course2/)<br>📂 [Course3 Folder](projects/exercises/Course3/) | ✅ Completed |
 | **Week 2** | 📝 [Week 2 Notes](notes/week2.md) | *Topics to be announced* | ⏳ Pending | 🚧 In Progress |
 | **Week 3** | 📝 [Week 3 Notes](notes/week3.md) | *Topics to be announced* | ⏳ Pending | ⏳ Upcoming |
 | **Week 4** | 📝 [Week 4 Notes](notes/week4.md) | *Topics to be announced* | ⏳ Pending | ⏳ Upcoming |
