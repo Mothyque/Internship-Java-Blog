@@ -1,0 +1,11 @@
+2026-07-20 13:53:16 [main] INFO  Main - Application started
+2026-07-20 13:53:16 [main] INFO  Main - Database URL = jdbc:postgresql://localhost:5432/mydb
+2026-07-20 13:53:16 [main] INFO  Main - Max connection pool size = 10
+2026-07-20 13:53:16 [main] WARN  Main - Demo application is using local sample data
+2026-07-20 13:53:16 [main] INFO  Main - Processing order: ORD-1234
+2026-07-20 13:53:16 [main] INFO  Main - Starting input validation for order ORD-1234
+2026-07-20 13:53:16 [main] INFO  Main - Validation passed
+2026-07-20 13:53:16 [main] INFO  Main - Saving order ORD-1234 to database
+2026-07-20 13:53:16 [main] INFO  Main - Executing INSERT for order ORD-1234 with total 89.97
+2026-07-20 13:53:16 [main] INFO  Main - SQL: INSERT INTO orders (id, total) VALUES ('ORD-1234', 89.97)
+2026-07-20 13:53:16 [main] INFO  Main - Order ORD-1234 processed successfully — total: $89.97

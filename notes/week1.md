@@ -142,3 +142,58 @@ Following up on Day 1's blocker, the internal IT ticket was resolved this mornin
 *   Successfully finalized the environment setup by installing **Rancher Desktop**.
 *   Configured all system environment variables for **JDK** and **Apache Maven**.
 *   Verified the installations through the terminal — all applications are now fully operational, and my development environment is 100% complete.  
+
+---
+
+## Day 3
+
+### Course 3: Logging & Concurrency
+
+#### Important aspects
+
+##### Logging vs. System.out.println()
+In enterprise Java applications, using `System.out.println()` for tracking application state is considered an anti-pattern. Professional applications rely on robust logging frameworks for several critical reasons:
+
+*   **System.out.println():** 
+    *   **No Severity Levels:** Cannot distinguish between a critical crash and a simple informational message.
+    *   **No Filtering:** It is all-or-nothing; you cannot turn off minor logs in production without changing the code.
+    *   **No Routing capabilities:** Writes strictly to standard output (`stdout`), making it difficult to route logs to external files or tracking systems.
+    *   **Performance & Clutter:** Synchronous by nature, which can slow down applications and clutter production environment consoles.
+*   **Logging Frameworks:**
+    *   Provide a **structured** and standard way of formatting logs.
+    *   Create a **persistent record** of application behavior over time.
+    *   Essential for debugging, proactive monitoring, and security/performance analysis.
+
+##### Core Logging Concepts (Java Util Logging / SLF4J Standard)
+A logging system is built around three core components:
+*   **Log Levels (Hierarchy from high to low severity):**
+    *   `SEVERE` / `ERROR`: System crashes, data corruption, or critical issues requiring immediate action.
+    *   `WARNING`: Unexpected behavior or non-fatal errors that allow the app to continue running but indicate a potential issue.
+    *   `INFO` / `CONFIG`: General application milestones (e.g., application startup, environment configuration).
+    *   `FINE` / `FINER` / `FINEST` (or `DEBUG` / `TRACE`): Highly detailed technical information used exclusively during development or deep debugging sessions.
+*   **Log Configuration Anatomy:**
+    *   **Handlers / Appenders:** Determine *where* the logs go (e.g., Console, File, Network Socket, Remote Log Aggregator).
+    *   **Levels:** Set threshold rules to filter out less severe messages (e.g., setting the level to `INFO` hides all `DEBUG`/`FINE` logs).
+    *   **Formatters / Layouts:** Control *how* the log entry looks (e.g., Plain Text, JSON format, adding timestamps, thread IDs, or class names).
+
+##### The Power of Logging
+Proper logging directly enhances:
+*   **Observability:** Understanding the internal state of a running system just by looking at its outputs.
+*   **Bug Identification:** Tracking down errors along with their complete stack traces.
+*   **Behavioral Analysis:** Observing how users interact with the app or how resources fluctuate.
+*   **Logical Tracing:** Following the precise end-to-end path of a specific request or user action across multiple classes.
+
+##### Advanced Concurrency: Concurrency vs. Parallelism
+*   **Concurrency:** The art of **handling** multiple tasks at the same time. It is about *structure*. By sharing a single processing resource (interleaved execution on a single CPU core), the system gives the illusion that tasks are running at once.
+*   **Parallelism:** The art of **executing** multiple tasks simultaneously. It is about *execution*. It requires multiple hardware processing units (CPU cores) running separate jobs at the exact same physical millisecond.
+
+##### The Concurrency Toolkit Core Entities
+Managing raw `Thread` objects manually is inefficient. Modern Java uses high-level abstractions:
+*   **Thread:** The physical execution worker doing the actual processing job.
+*   **Runnable / Callable:** The "job description" or task definition. `Runnable` represents a task that does not return a result, while `Callable` can return a value and throw checked exceptions.
+*   **ExecutorService:** The manager or controller group. Instead of creating new threads manually for every task, you submit your `Runnable` jobs to an `ExecutorService` (Thread Pool). It safely manages the worker threads, queues pending tasks, and optimizes hardware resource usage.
+
+##### Practical Exercises
+To practice thread pool optimization, asynchronous tasks, and proper log filtering levels, I completed the coding challenges assigned for this course.
+
+**[View Code](../projects/exercises/Course3/)** 

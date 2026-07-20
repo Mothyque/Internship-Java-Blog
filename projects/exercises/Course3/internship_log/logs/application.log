@@ -1,0 +1,97 @@
+2026-07-20 13:24:50 [main] INFO  Main - Application started
+2026-07-20 13:24:50 [main] INFO  Main - Application started
+2026-07-20 13:24:50 [main] INFO  Main - Database URL = jdbc:postgresql://localhost:5432/mydb
+2026-07-20 13:24:50 [main] INFO  Main - Max connection pool size = 10
+2026-07-20 13:24:50 [main] INFO  Main - Processing order: ORD-1234
+2026-07-20 13:24:50 [main] INFO  Main - Entering processOrder(orderId=ORD-1234, quantity=3)
+2026-07-20 13:24:50 [main] INFO  Main - Starting input validation for order ORD-1234
+2026-07-20 13:24:50 [main] INFO  Main - Validation passed
+2026-07-20 13:24:50 [main] INFO  Main - Price per unit: 29.99, computed total: 89.97
+2026-07-20 13:24:50 [main] INFO  Main - Saving order ORD-1234 to database
+2026-07-20 13:24:50 [main] INFO  Main - Executing INSERT for order ORD-1234 with total 89.97
+2026-07-20 13:24:50 [main] INFO  Main - SQL: INSERT INTO orders (id, total) VALUES ('ORD-1234', 89.97)
+2026-07-20 13:24:50 [main] INFO  Main - Order ORD-1234 processed successfully — total: $89.97
+2026-07-20 13:24:50 [main] INFO  Main - Exiting processOrder()
+2026-07-20 13:25:23 [main] INFO  Main - Application started
+2026-07-20 13:25:23 [main] INFO  Main - Application started
+2026-07-20 13:25:23 [main] INFO  Main - Database URL = jdbc:postgresql://localhost:5432/mydb
+2026-07-20 13:25:23 [main] INFO  Main - Max connection pool size = 10
+2026-07-20 13:25:23 [main] INFO  Main - Processing order: ORD-1234
+2026-07-20 13:25:23 [main] INFO  Main - Entering processOrder(orderId=ORD-1234, quantity=3)
+2026-07-20 13:25:23 [main] INFO  Main - Starting input validation for order ORD-1234
+2026-07-20 13:25:23 [main] INFO  Main - Validation passed
+2026-07-20 13:25:23 [main] INFO  Main - Price per unit: 29.99, computed total: 89.97
+2026-07-20 13:25:23 [main] INFO  Main - Saving order ORD-1234 to database
+2026-07-20 13:25:23 [main] INFO  Main - Executing INSERT for order ORD-1234 with total 89.97
+2026-07-20 13:25:23 [main] INFO  Main - SQL: INSERT INTO orders (id, total) VALUES ('ORD-1234', 89.97)
+2026-07-20 13:25:23 [main] INFO  Main - Order ORD-1234 processed successfully — total: $89.97
+2026-07-20 13:25:23 [main] INFO  Main - Exiting processOrder()
+2026-07-20 13:51:41 [main] TRACE Main - Entering application bootstrap
+2026-07-20 13:51:41 [main] DEBUG Main - Loading application settings
+2026-07-20 13:51:41 [main] INFO  Main - Application started
+2026-07-20 13:51:41 [main] INFO  Main - Database URL = jdbc:postgresql://localhost:5432/mydb
+2026-07-20 13:51:41 [main] INFO  Main - Max connection pool size = 10
+2026-07-20 13:51:41 [main] WARN  Main - Demo application is using local sample data
+2026-07-20 13:51:41 [main] TRACE Main - Starting processOrder for ORD-1234
+2026-07-20 13:51:41 [main] INFO  Main - Processing order: ORD-1234
+2026-07-20 13:51:41 [main] DEBUG Main - Entering processOrder(orderId=ORD-1234, quantity=3)
+2026-07-20 13:51:41 [main] INFO  Main - Starting input validation for order ORD-1234
+2026-07-20 13:51:41 [main] INFO  Main - Validation passed
+2026-07-20 13:51:41 [main] DEBUG Main - Price per unit: 29.99, computed total: 89.97
+2026-07-20 13:51:41 [main] INFO  Main - Saving order ORD-1234 to database
+2026-07-20 13:51:41 [main] DEBUG Main - Preparing database insert for ORD-1234
+2026-07-20 13:51:41 [main] INFO  Main - Executing INSERT for order ORD-1234 with total 89.97
+2026-07-20 13:51:41 [main] INFO  Main - SQL: INSERT INTO orders (id, total) VALUES ('ORD-1234', 89.97)
+2026-07-20 13:51:41 [main] INFO  Main - Order ORD-1234 processed successfully — total: $89.97
+2026-07-20 13:51:41 [main] TRACE Main - Exiting processOrder for ORD-1234
+2026-07-20 13:51:56 [main] TRACE Main - Entering application bootstrap
+2026-07-20 13:51:56 [main] DEBUG Main - Loading application settings
+2026-07-20 13:51:56 [main] INFO  Main - Application started
+2026-07-20 13:51:56 [main] INFO  Main - Database URL = jdbc:postgresql://localhost:5432/mydb
+2026-07-20 13:51:56 [main] INFO  Main - Max connection pool size = 10
+2026-07-20 13:51:56 [main] WARN  Main - Demo application is using local sample data
+2026-07-20 13:51:56 [main] TRACE Main - Starting processOrder for ORD-1234
+2026-07-20 13:51:56 [main] INFO  Main - Processing order: ORD-1234
+2026-07-20 13:51:56 [main] DEBUG Main - Entering processOrder(orderId=ORD-1234, quantity=3)
+2026-07-20 13:51:56 [main] INFO  Main - Starting input validation for order ORD-1234
+2026-07-20 13:51:56 [main] INFO  Main - Validation passed
+2026-07-20 13:51:56 [main] DEBUG Main - Price per unit: 29.99, computed total: 89.97
+2026-07-20 13:51:56 [main] INFO  Main - Saving order ORD-1234 to database
+2026-07-20 13:51:56 [main] DEBUG Main - Preparing database insert for ORD-1234
+2026-07-20 13:51:56 [main] INFO  Main - Executing INSERT for order ORD-1234 with total 89.97
+2026-07-20 13:51:56 [main] INFO  Main - SQL: INSERT INTO orders (id, total) VALUES ('ORD-1234', 89.97)
+2026-07-20 13:51:56 [main] INFO  Main - Order ORD-1234 processed successfully — total: $89.97
+2026-07-20 13:51:56 [main] TRACE Main - Exiting processOrder for ORD-1234
+2026-07-20 13:52:48 [main] TRACE Main - Entering application bootstrap
+2026-07-20 13:52:48 [main] DEBUG Main - Loading application settings
+2026-07-20 13:52:48 [main] INFO  Main - Application started
+2026-07-20 13:52:48 [main] INFO  Main - Database URL = jdbc:postgresql://localhost:5432/mydb
+2026-07-20 13:52:48 [main] INFO  Main - Max connection pool size = 10
+2026-07-20 13:52:48 [main] WARN  Main - Demo application is using local sample data
+2026-07-20 13:52:48 [main] TRACE Main - Starting processOrder for ORD-1234
+2026-07-20 13:52:48 [main] INFO  Main - Processing order: ORD-1234
+2026-07-20 13:52:48 [main] DEBUG Main - Entering processOrder(orderId=ORD-1234, quantity=3)
+2026-07-20 13:52:48 [main] INFO  Main - Starting input validation for order ORD-1234
+2026-07-20 13:52:48 [main] INFO  Main - Validation passed
+2026-07-20 13:52:48 [main] DEBUG Main - Price per unit: 29.99, computed total: 89.97
+2026-07-20 13:52:48 [main] INFO  Main - Saving order ORD-1234 to database
+2026-07-20 13:52:48 [main] DEBUG Main - Preparing database insert for ORD-1234
+2026-07-20 13:52:48 [main] INFO  Main - Executing INSERT for order ORD-1234 with total 89.97
+2026-07-20 13:52:48 [main] INFO  Main - SQL: INSERT INTO orders (id, total) VALUES ('ORD-1234', 89.97)
+2026-07-20 13:52:48 [main] INFO  Main - Order ORD-1234 processed successfully — total: $89.97
+2026-07-20 13:52:48 [main] TRACE Main - Exiting processOrder for ORD-1234
+2026-07-20 13:53:26 [main] DEBUG Main - Loading application settings
+2026-07-20 13:53:26 [main] INFO  Main - Application started
+2026-07-20 13:53:26 [main] INFO  Main - Database URL = jdbc:postgresql://localhost:5432/mydb
+2026-07-20 13:53:26 [main] INFO  Main - Max connection pool size = 10
+2026-07-20 13:53:26 [main] WARN  Main - Demo application is using local sample data
+2026-07-20 13:53:26 [main] INFO  Main - Processing order: ORD-1234
+2026-07-20 13:53:26 [main] DEBUG Main - Entering processOrder(orderId=ORD-1234, quantity=3)
+2026-07-20 13:53:26 [main] INFO  Main - Starting input validation for order ORD-1234
+2026-07-20 13:53:26 [main] INFO  Main - Validation passed
+2026-07-20 13:53:26 [main] DEBUG Main - Price per unit: 29.99, computed total: 89.97
+2026-07-20 13:53:26 [main] INFO  Main - Saving order ORD-1234 to database
+2026-07-20 13:53:26 [main] DEBUG Main - Preparing database insert for ORD-1234
+2026-07-20 13:53:26 [main] INFO  Main - Executing INSERT for order ORD-1234 with total 89.97
+2026-07-20 13:53:26 [main] INFO  Main - SQL: INSERT INTO orders (id, total) VALUES ('ORD-1234', 89.97)
+2026-07-20 13:53:26 [main] INFO  Main - Order ORD-1234 processed successfully — total: $89.97
