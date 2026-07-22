@@ -218,12 +218,46 @@ Version control systems (VCS) like Git provide critical infrastructure for moder
 The standard local-to-remote development flow follows four key phases:
 `Working Directory (Edited Files) -> Staging Area (git add) -> Local Repository (git commit) -> Remote Repository (git push)`
 
-##### 4. Advanced Git Operations
+```
+# 1. Clone a remote repository to your machine
+git clone https://github.com/company/project.git
+cd project
+
+# 2. Create and switch to a new feature branch
+git switch -c feature/login-page
+# (Alternative legacy command: git checkout -b feature/login-page)
+
+# 3. Check status of edited files
+git status
+
+# 4. Stage specific files or all changes
+git add src/login.js
+git add .
+
+# 5. Commit snapshot with a descriptive message
+git commit -m "Add login form validation"
+
+# 6. Push local branch to remote repository
+git push origin feature/login-page
+```
+
+##### Advanced Git Operations
+# Linear Rebase Flow
+git checkout feature/login-page
+git rebase main
+# (Replays your commits on top of the latest main)
 
 ###### Git Rebase vs. Git Merge
 *   **Git Merge:** Combines branches by creating a special "merge commit". Preserves complete chronological history, but can create a messy graph with many branching paths.
 *   **Git Rebase:** Re-applies your feature branch commits on top of the latest target branch. Creates a clean, linear history.
 *   *Golden Rule:* Never rebase a branch that is shared with other developers, as it rewrites public commit history!
+
+```
+# Standard Merge Flow
+git checkout main
+git pull origin main
+git merge feature/login-page
+```
 
 ###### Force Push Safety
 *   `git push --force`: Overwrites remote history unconditionally. Dangerous—can destroy teammates' work.
@@ -236,14 +270,38 @@ A conflict occurs when two branches modify the exact same line in a file, forcin
 3. Remove all conflict markers.
 4. Stage the file (`git add .`) and finalize with a commit (`git commit`).
 
+```
+// Conflict markers inside the file:
+<<<<<<< HEAD
+const greeting = "Hello, team!";
+=======
+const greeting = "Welcome to the application!";
+>>>>>>> feature/login-page
+
+# After manually fixing the code and deleting markers, finalize the resolution:
+git add src/greeting.js
+git commit -m "Fix merge conflict in greeting text"
+```
+
 ###### Cherry-Pick
 Used to select and apply a single specific commit from another branch into your current branch (e.g., pulling a critical bug fix into a release branch without merging the entire feature).
 
-##### 5. Pull Request (PR) Workflow
+```
+# Find the specific commit hash on main
+git log main --oneline
+
+# Switch to target branch (e.g., release branch)
+git checkout release/v2.3
+
+# Apply only that specific commit
+git cherry-pick a1b2c3d
+```
+
+##### Pull Request (PR) Workflow
 The standard enterprise flow for merging code into shared branches:
 `Push Feature Branch -> Open PR -> Run Automated CI Checks -> Peer Code Review -> Merge into Target Branch`
 
-##### 6. Git Best Practices
+##### Git Best Practices
 
 ###### Writing Great Commit Messages
 *   Use imperative mood in the summary line (*"Add feature"* instead of *"Added feature"*).
@@ -259,7 +317,3 @@ The standard enterprise flow for merging code into shared branches:
 | **Security** | Use `.gitignore` for secrets, build artifacts, and `node_modules` | Commit API keys, passwords, credentials, or `.env` files |
 | **Syncing** | Run `git pull` frequently before starting new tasks | Work for days locally without pushing code to the remote |
 | **Branching** | Keep main branches protected and perform code reviews | Force-push directly to `main` or shared team branches |
-
-##### Practical Exercises
-To master version control workflows, I practiced branch management, resolving merge conflicts, rebasing, and submitting structured PRs.
-*   📂 **[View Homework: Course5 Folder](../proiecte/Course5/)** *(contains version control practice scenarios and scripting)*
