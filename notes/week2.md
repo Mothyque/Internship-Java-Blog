@@ -242,10 +242,6 @@ git push origin feature/login-page
 ```
 
 ##### Advanced Git Operations
-# Linear Rebase Flow
-git checkout feature/login-page
-git rebase main
-# (Replays your commits on top of the latest main)
 
 ###### Git Rebase vs. Git Merge
 *   **Git Merge:** Combines branches by creating a special "merge commit". Preserves complete chronological history, but can create a messy graph with many branching paths.
@@ -257,6 +253,11 @@ git rebase main
 git checkout main
 git pull origin main
 git merge feature/login-page
+
+# Linear Rebase Flow
+git checkout feature/login-page
+git rebase main
+# (Replays your commits on top of the latest main)
 ```
 
 ###### Force Push Safety
