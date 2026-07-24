@@ -318,3 +318,297 @@ The standard enterprise flow for merging code into shared branches:
 | **Security** | Use `.gitignore` for secrets, build artifacts, and `node_modules` | Commit API keys, passwords, credentials, or `.env` files |
 | **Syncing** | Run `git pull` frequently before starting new tasks | Work for days locally without pushing code to the remote |
 | **Branching** | Keep main branches protected and perform code reviews | Force-push directly to `main` or shared team branches |
+
+--- 
+
+## Day 3
+
+### Course 6: Design Patterns & ECB Architecture
+
+#### Important aspects
+
+##### What are Design Patterns?
+Design Patterns are reusable, time-tested solutions to common software design challenges. Rather than static code snippets or libraries, they function as conceptual blueprints that guide the structure of classes and object interactions.
+
+##### Benefits of Design Patterns
+*   **Common Vocabulary:** Establishes a shared design language for developers (e.g., saying *"Let's use a Factory here"* instantly conveys structure and intent).
+*   **Maintainability & Readability:** Keeps code modular, readable, and easier to refactor over time.
+*   **Scalability & Extensibility:** Adheres to SOLID principles, notably the Open/Closed Principle and Single Responsibility Principle.
+*   **Loose Coupling:** Reduces direct dependencies between system components.
+
+##### Categories of Design Patterns
+
+###### Creational Patterns
+Focus on object creation mechanisms, separating object instantiation logic from the rest of the system.
+
+*   **Singleton:** Guarantees a class has only one instance throughout the application lifecycle and provides a global point of access to it.
+    *   *Pro-Tip:* Classic naive implementations are not thread-safe in multi-threaded environments. Robust approaches use thread-safe techniques like double-checked locking, lazy initialization holders, or enum-based singletons.
+    *   *Use Cases:* Database connection pools, configuration managers, logging services, thread pools.
+``` java
+public class Singleton {
+    private static volatile Singleton instance;
+
+    private Singleton() { }
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}
+```
+
+*   **Factory Method:** Defines an interface for creating objects, delegating the actual instantiation to subclasses.
+    *   *Benefits:* Decouples client code from concrete implementations and allows seamless addition of new product types following the Open/Closed Principle.
+``` java
+public interface Vehicle {
+    void drive();
+}
+
+public class Car implements Vehicle {
+    @Override
+    public void drive() {
+        // implementation
+    }
+}
+
+public abstract class VehicleFactory {
+    public abstract Vehicle createVehicle();
+}
+
+public class CarFactory extends VehicleFactory {
+    @Override
+    public Vehicle createVehicle() {
+        return new Car();
+    }
+}
+```
+
+*   **Builder:** Separates the construction of a complex object from its representation, allowing the step-by-step assembly of immutable objects with many optional parameters.
+    *   *Benefits:* Eliminates telescoping constructors and improves code readability.
+``` java
+public class Pizza {
+    private String size;
+    private boolean cheese;
+    private boolean pepperoni;
+
+    private Pizza(Builder builder) {
+        this.size = builder.size;
+        this.cheese = builder.cheese;
+        this.pepperoni = builder.pepperoni;
+    }
+
+    public static class Builder {
+        private String size;
+        private boolean cheese;
+        private boolean pepperoni;
+
+        public Builder(String size) {
+            this.size = size;
+        }
+
+        public Builder addCheese() {
+            this.cheese = true;
+            return this;
+        }
+
+        public Builder addPepperoni() {
+            this.pepperoni = true;
+            return this;
+        }
+
+        public Pizza build() {
+            return new Pizza(this);
+        }
+    }
+}
+
+// Usage: Pizza pizza = new Pizza.Builder("Large").addCheese().addPepperoni().build();
+```
+
+*   **Prototype:** Enables cloning existing objects without making code dependent on their concrete classes.
+    *   *Use Cases:* When instantiating an object from scratch is computationally expensive (e.g., heavy database queries or file parsing).
+
+###### Structural Patterns
+Focus on assembling classes and objects into larger, flexible structures without sacrificing efficiency.
+
+*   **Adapter:** Converts the interface of a class into another interface expected by the client, allowing incompatible interfaces to collaborate.
+    *   *Use Cases:* Integrating legacy code or wrapping third-party libraries.
+```java
+public interface MediaPlayer {
+    void play(String fileName);
+}
+
+public interface AdvancedMediaPlayer {
+    void playMp4(String fileName);
+}
+
+public class MediaAdapter implements MediaPlayer {
+    private AdvancedMediaPlayer advancedMediaPlayer;
+
+    public MediaAdapter(AdvancedMediaPlayer advancedMediaPlayer) {
+        this.advancedMediaPlayer = advancedMediaPlayer;
+    }
+
+    @Override
+    public void play(String fileName) {
+        advancedMediaPlayer.playMp4(fileName);
+    }
+}
+```
+
+*   **Decorator:** Dynamically adds new behaviors or responsibilities to an object without modifying the underlying class or using inheritance.
+    *   *Benefits:* Highly flexible alternative to subclassing that respects the Single Responsibility Principle.
+``` java
+public interface Coffee {
+    String getDescription();
+    double getCost();
+}
+
+public class SimpleCoffee implements Coffee {
+    @Override
+    public String getDescription() { return "Simple Coffee"; }
+
+    @Override
+    public double getCost() { return 2.0; }
+}
+
+public abstract class CoffeeDecorator implements Coffee {
+    protected Coffee coffee;
+
+    public CoffeeDecorator(Coffee coffee) {
+        this.coffee = coffee;
+    }
+
+    @Override
+    public String getDescription() { return coffee.getDescription(); }
+
+    @Override
+    public double getCost() { return coffee.getCost(); }
+}
+
+public class MilkDecorator extends CoffeeDecorator {
+    public MilkDecorator(Coffee coffee) {
+        super(coffee);
+    }
+
+    @Override
+    public String getDescription() {
+        return coffee.getDescription() + ", Milk";
+    }
+
+    @Override
+    public double getCost() {
+        return coffee.getCost() + 0.5;
+    }
+}
+```
+
+*   **Facade:** Provides a simplified, high-level interface to a complex framework, subsystem, or set of classes.
+    *   *Benefits:* Isolates client code from internal system complexity.
+*   **Proxy:** Acts as a surrogate or placeholder for another object to control, restrict, or optimize access to it.
+    *   *Use Cases:* Lazy loading, access control/security, caching, and logging.
+
+###### Behavioral Patterns
+Focus on effective communication, algorithms, and assignment of responsibilities between objects.
+
+*   **Observer:** Establishes a one-to-many subscription mechanism where changes in one object (Subject) automatically notify all registered dependents (Observers).
+    *   *Use Cases:* Event-driven architectures, GUI listeners, and notification systems.
+``` java
+import java.util.ArrayList;
+import java.util.List;
+
+public interface Observer {
+    void update(String message);
+}
+
+public class Subject {
+    private List<Observer> observers = new ArrayList<>();
+
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+    public void notifyObservers(String message) {
+        for (Observer observer : observers) {
+            observer.update(message);
+        }
+    }
+}
+```
+
+*   **Strategy:** Encapsulates a family of algorithms into interchangeable classes, letting the algorithm vary independently of clients that use it.
+    *   *Benefits:* Eliminates long conditional blocks (like nested `if-else` or `switch` statements).
+``` java
+public interface PaymentStrategy {
+    void pay(int amount);
+}
+
+public class CreditCardPayment implements PaymentStrategy {
+    @Override
+    public void pay(int amount) {
+        // implementation
+    }
+}
+
+public class PayPalPayment implements PaymentStrategy {
+    @Override
+    public void pay(int amount) {
+        // implementation
+    }
+}
+
+public class ShoppingCart {
+    private PaymentStrategy paymentStrategy;
+
+    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
+    }
+
+    public void checkout(int amount) {
+        paymentStrategy.pay(amount);
+    }
+}
+```
+
+*   **Command:** Encapsulates a request as an object, enabling parameterization of clients with different requests, queuing, and undo/redo operations.
+*   **Iterator:** Provides a way to sequentially access elements of an aggregate object without exposing its underlying structure (lists, trees, graphs).
+
+##### ECB Pattern (Entity-Control-Boundary)
+ECB is an architectural pattern used to analyze and structure object-oriented applications, commonly applied in Enterprise application development and robustness modeling.
+
+###### Core Components
+*   **Actors:** The external users or systems interacting with the application (same concept as in UML/Use Case diagrams).
+*   **Boundary:** Represents the interaction interface between external actors and internal logic (e.g., REST endpoints, web pages, system interfaces). It handles request/response mapping and validation without containing core business logic.
+*   **Control:** Acts as the glue between Boundary and Entity elements. It orchestrates the flow, manages transactions, and executes domain business logic.
+*   **Entity:** Represents domain objects (e.g., `Student`, `Course`, `Order`) that hold application state, typically mapped to persistent storage (e.g., database tables).
+
+##### Business Component Architecture
+In modern Enterprise applications, ECB directly translates into a **Package-by-Feature** or **Business Component (BC)** folder structure.
+
+###### Package Structure inside a Business Component
+```
+com.app.modules.course/
+├── boundary/
+│   ├── CourseResource.java     (JAX-RS / REST Controller)
+│   └── CourseFacade.java       (Entry point to business logic)
+├── control/
+│   ├── CourseValidator.java    (Task-oriented validation logic)
+│   └── PriceCalculator.java    (Business Activities)
+└── entity/
+    ├── Course.java             (Persistent Domain Object)
+    └── CourseStatus.java       (Enums, exceptions, domain DTOs)
+```
+
+###### Component Responsibilities
+
+| Pattern / Package | Responsibility | Typical Contents |
+| :--- | :--- | :--- |
+| **Boundary** | Perimeter layer exposing the component to UI or REST APIs. | JAX-RS resources, REST controllers, Business Facades. |
+| **Control** | Task-oriented logic and orchestration layer inside the BC. | Business Activities (POJOs), calculators, specialized validators. |
+| **Entity** | Domain model containing persistent and transient state. | Domain entities, DTOs, enums, domain-specific exceptions. |
