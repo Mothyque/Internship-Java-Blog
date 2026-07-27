@@ -612,3 +612,48 @@ com.app.modules.course/
 | **Boundary** | Perimeter layer exposing the component to UI or REST APIs. | JAX-RS resources, REST controllers, Business Facades. |
 | **Control** | Task-oriented logic and orchestration layer inside the BC. | Business Activities (POJOs), calculators, specialized validators. |
 | **Entity** | Domain model containing persistent and transient state. | Domain entities, DTOs, enums, domain-specific exceptions. |
+
+---
+
+## Day 4
+
+### Course 7: Java Build Infrastructure & CI/CD
+
+#### Important aspects
+
+##### What is Java Build Infrastructure?
+Java Build Infrastructure refers to the tools, processes, and automation frameworks responsible for transforming raw Java source code into executable, tested, and deployable software artifacts (e.g., JAR or WAR files).
+
+##### Core Build Infrastructure Steps
+A standard enterprise build lifecycle follows several sequential stages:
+*   **Create Executable Packages:** Package compiled class files and resources into executable archives (JAR/WAR/Uber-JAR).
+*   **Compile, Test & Report:** Compile source code, execute automated unit/integration tests, and generate execution/coverage reports.
+*   **Custom Build Configurations (Profiles):** Use environment profiles (dev, test, prod) to adapt configurations dynamically based on target deployment environments.
+*   **Plugin Architecture:** Extend standard build tool capabilities using plugins to perform custom tasks (e.g., code linting, static analysis, artifact signing).
+*   **Artifact Management:** Download external dependencies from remote repositories (e.g., Maven Central) and upload generated build artifacts to enterprise artifactories (e.g., Nexus, JFrog Artifactory).
+
+##### Java Build Tools Comparison
+*   **Java CLI (JDK Native):** Built-in command-line executables provided directly by the JDK (`javac`, `java`, `jar`). Useful for quick local compilation but lacks dependency management for large applications.
+```
+javac -d out src\main\java\com\example\Main.java
+```
+*   **Apache Maven:** Declarative, XML-based build tool (`pom.xml`) that follows strict convention over configuration and standardizes the build lifecycle across enterprise projects.
+```
+mvn clean install -DskipTests
+```
+*   **Gradle:** Domain-specific build automation tool using Groovy or Kotlin DSL scripts (`build.gradle`). Highly flexible, faster due to incremental builds and daemon caching, and widely used in modern microservices and Android development.
+```
+gradlew build -Dquarkus.package.jar.type=uber-jar
+```
+
+##### CI/CD Lifecycle
+Continuous Integration (CI) and Continuous Delivery/Deployment (CD) represent the end-to-end automated lifecycle of modern software delivery:
+`Plan -> Code -> Build -> Test -> Release -> Deploy -> Operate -> Monitor -> Plan`
+
+*   **Pro-Tip:** Automate your entire CI/CD workflow using GitHub Actions or Jenkins to run automated builds, tests, and security scans on every push or Pull Request.
+
+##### Extra DevSecOps & Project Management Concepts
+*   **Black Duck:** A Software Composition Analysis (SCA) tool used to scan third-party dependencies for security vulnerabilities and open-source license compliance issues.
+*   **Fortify:** A Static Application Security Testing (SAST) tool that scans source code for security flaws, vulnerabilities (e.g., SQL injection, XSS), and unsafe coding practices before deployment.
+*   **SonarQube:** An automated code quality inspection platform that analyzes source code for bugs, code smells, security vulnerabilities, and test coverage metrics.
+*   **Gantt Chart:** A visual project management planning tool that illustrates project schedules, task breakdowns, dependencies, and timelines over a horizontal calendar layout.
