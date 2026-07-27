@@ -657,3 +657,258 @@ Continuous Integration (CI) and Continuous Delivery/Deployment (CD) represent th
 *   **Fortify:** A Static Application Security Testing (SAST) tool that scans source code for security flaws, vulnerabilities (e.g., SQL injection, XSS), and unsafe coding practices before deployment.
 *   **SonarQube:** An automated code quality inspection platform that analyzes source code for bugs, code smells, security vulnerabilities, and test coverage metrics.
 *   **Gantt Chart:** A visual project management planning tool that illustrates project schedules, task breakdowns, dependencies, and timelines over a horizontal calendar layout.
+
+---
+
+## Day 5
+
+### Course 8: Linux Fundamentals & Tools
+
+#### Important aspects
+
+##### History & Philosophy of Linux
+Linux was created by Linus Torvalds in 1991 as a free and open-source alternative to proprietary Unix operating systems. Inspired by MINIX and Unix design principles, it embraces the core Unix philosophy: *"Do one thing and do it well."*
+*   **Modern Impact:** Today, Linux powers over 90% of cloud infrastructure, 99% of top supercomputers, and serves as the underlying kernel for Android OS.
+*   **Key Advantages:** Free and open-source, enterprise-grade stability, robust security model, extreme flexibility, and the industry standard for servers.
+
+##### File Navigation Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| **pwd** | Print working directory | `pwd` |
+| **ls** | List files and directories | `ls -la` |
+| **cd** | Change directory | `cd /home/user` |
+| **mkdir** | Create directory | `mkdir project` |
+| **rmdir** | Remove empty directory | `rmdir old_folder` |
+
+##### File Search & Content Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| **find** | Search for files | `find -name "*.txt"` |
+| **grep** | Search text patterns | `grep "error" log.txt` |
+| **locate** | Quick file search | `locate document.pdf` |
+| **head** | Show first lines | `head -n 10 file.txt` |
+| **tail** | Show last lines | `tail -n 10 file.txt` |
+
+##### File Permissions Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| **chmod** | Change file permissions | `chmod 755 script.sh` |
+| **chown** | Change file owner | `chown user:group file.txt` |
+| **chgrp** | Change file group | `chgrp developers file.txt` |
+
+###### Permission Numbers
+*   **7:** `rwx` (read, write, execute)
+*   **6:** `rw-` (read, write)
+*   **5:** `r-x` (read, execute)
+*   **4:** `r--` (read only)
+
+##### System Information Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| **uname** | Show system information | `uname -a` |
+| **hostname** | Show/set hostname | `hostname` |
+| **uptime** | Show system uptime | `uptime` |
+| **whoami** | Show current user | `whoami` |
+| **df** | Show disk space usage | `df -h` |
+| **du** | Show directory size | `du -sh /home` |
+| **free** | Memory usage | `free -m` |
+
+##### Process Management Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| **ps** | Show running processes | `ps aux` |
+| **top** | Real-time process monitoring | `top` |
+| **htop** | Interactive process viewer | `htop` |
+| **kill** | Terminate process by PID | `kill 1234` |
+| **killall** | Terminate processes by name | `killall firefox` |
+| **bg** | Background a process | `bg %1` |
+| **fg** | Foreground a process | `fg %1` |
+
+##### Network Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| **ping** | Test connectivity | `ping google.com` |
+| **ifconfig** | Network interface config | `ifconfig` |
+| **ip** | Network configuration | `ip addr show` |
+| **netstat** | Network connections | `netstat -tuln` |
+| **wget** | Download files | `wget URL` |
+| **curl** | Transfer data | `curl -O URL` |
+| **ssh** | Secure shell connection | `ssh user@host` |
+
+##### Package Management Commands
+
+###### Debian/Ubuntu (APT)
+
+| Command | Description |
+| :--- | :--- |
+| `sudo apt update` | Update package lists |
+| `sudo apt upgrade` | Upgrade installed packages |
+| `sudo apt install package` | Install a package |
+| `sudo apt remove package` | Remove a package |
+| `apt search keyword` | Search for a package |
+
+###### Red Hat/CentOS (YUM/DNF)
+
+| Command | Description |
+| :--- | :--- |
+| `sudo yum update` | Update package lists |
+| `sudo yum install package` | Install a package |
+| `sudo yum remove package` | Remove a package |
+| `sudo dnf install package` | Install a package |
+
+##### Text Processing Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| **sort** | Sort lines | `sort file.txt` |
+| **uniq** | Remove duplicates | `uniq file.txt` |
+| **wc** | Count lines / words / bytes | `wc -l file.txt` |
+| **cut** | Extract columns | `cut -d: -f1 /etc/passwd` |
+| **sed** | Stream editor | `sed 's/old/new/g' file.txt` |
+| **awk** | Text processing | `awk '{print $1}' file.txt` |
+
+##### Archive & Compression Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| **tar** | Archive files | `tar -czf archive.tar.gz folder/` |
+| **gzip** | Compress files | `gzip file.txt` |
+| **gunzip** | Decompress files | `gunzip file.txt.gz` |
+| **zip** | Create zip archive | `zip -r archive.zip folder/` |
+| **unzip** | Extract zip archive | `unzip archive.zip` |
+
+##### User & Permission Management Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| **useradd** | Add a new user | `sudo useradd john` |
+| **userdel** | Delete a user | `sudo userdel john` |
+| **passwd** | Change user password | `passwd` |
+| **su** | Switch user | `su - root` |
+| **sudo** | Execute command as superuser | `sudo apt update` |
+| **groups** | Show user groups | `groups john` |
+
+##### System Control Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| **shutdown** | Shutdown system | `sudo shutdown -h now` |
+| **reboot** | Reboot system | `sudo reboot` |
+| **systemctl** | Manage services | `sudo systemctl start nginx` |
+| **service** | Manage services | `sudo service apache2 restart` |
+| **journalctl** | View system logs | `journalctl -xe` |
+
+##### Useful Keyboard Shortcuts
+
+| Shortcut | Description |
+| :--- | :--- |
+| **Ctrl + C** | Terminate current process |
+| **Ctrl + Z** | Suspend current process |
+| **Ctrl + D** | Logout / Exit |
+| **Ctrl + L** | Clear terminal screen |
+| **Ctrl + A** | Go to beginning of line |
+| **Ctrl + E** | Go to end of line |
+| **Ctrl + R** | Search command history |
+| **Tab** | Auto-complete |
+| **Up/Down Arrow** | Navigate command history |
+
+##### Text Editors in Linux
+
+###### Why Text Editors Matter
+*   Essential for system configuration
+*   Script and code development
+*   Log file analysis
+*   Quick file editing
+
+###### Categories
+1. Command-Line Editors
+2. GUI Editors
+3. IDE-Style Editors
+
+##### Command-Line Editors
+
+###### Vim
+Why Vim: Available everywhere, extremely powerful, highly customizable, and lightning fast for experienced users.
+
+| Key | Action |
+| :--- | :--- |
+| **i** | Enter insert mode |
+| **Esc** | Return to normal mode |
+| **:w** | Save file |
+| **:q** | Quit |
+| **:wq** | Save and quit |
+| **:q!** | Quit without saving |
+| **dd** | Delete line |
+| **yy** | Copy line |
+| **p** | Paste line |
+
+###### Nano
+Why Nano: Simple, user-friendly, ideal for beginners, and displays shortcuts at the bottom of the screen.
+
+| Shortcut | Action |
+| :--- | :--- |
+| **Ctrl + O** | Save file |
+| **Ctrl + X** | Exit |
+| **Ctrl + K** | Cut line |
+| **Ctrl + U** | Paste line |
+| **Ctrl + W** | Search text |
+| **Ctrl + \\** | Replace text |
+| **Ctrl + G** | Show help |
+
+###### Emacs
+Why Emacs: Highly extensible with Elisp, functions as a complete development environment, with built-in email, IRC, file manager, and more.
+
+| Command | Action |
+| :--- | :--- |
+| **Ctrl + X, Ctrl + S** | Save file |
+| **Ctrl + X, Ctrl + C** | Exit |
+| **Ctrl + K** | Cut line |
+| **Ctrl + Y** | Paste line |
+| **Ctrl + S** | Search text |
+| **Ctrl + _** | Undo |
+
+##### Modern GUI Editors
+*   **Gedit:** Default text editor for GNOME desktop, clean interface, syntax highlighting, and plugin support.
+*   **Kate:** KDE Advanced Text Editor featuring a multi-document interface, project management, and powerful search/replace.
+*   **Geany:** Lightweight IDE that is fast, responsive, with code compilation support and a built-in terminal emulator.
+*   **Visual Studio Code (VS Code):** Microsoft's free, open-source code editor running on Linux, Windows, and macOS. Features IntelliSense, integrated terminal, Git integration, debugging support, and extensive extensions.
+
+##### Linux Best Practices
+*   **Use Tab Completion:** Save time and reduce errors by using tab completion for commands and file names.
+*   **Read Man Pages:** Use the `man` command to read manual pages for commands to understand their options and usage.
+*   **Use Command History:** Use the up and down arrow keys to navigate through command history to easily repeat previous commands.
+*   **Pipe Commands:** Use the pipe `|` to combine commands and pass the output of one command as input to another.
+*   **Be Careful with `sudo`:** Only use `sudo` when necessary, as elevated privileges directly affect system files.
+
+##### Extra Topics
+
+##### Midnight Commander (MC)
+Midnight Commander (`mc`) is a visual, text-based file manager (TUI - Terminal User Interface) for Unix-like systems. It features a dual-pane interface that allows users to easily view, copy, move, and manage files directly in the terminal.
+
+| Key | Action |
+| :--- | :--- |
+| **F3** | View file content |
+| **F4** | Edit file content |
+| **F5** | Copy file/directory |
+| **F6** | Move or rename file/directory |
+| **F7** | Create directory |
+| **F8** | Delete file/directory |
+| **F10** | Quit Midnight Commander |
+
+##### Gherkin Syntax & BDD
+Gherkin is a human-readable language used in Behavior-Driven Development (BDD). It uses structured keywords (`Given`, `When`, `Then`, `And`, `But`) to write automated acceptance tests and feature descriptions that both technical and non-technical stakeholders can understand.
+
+| Keyword | Purpose |
+| :--- | :--- |
+| **Feature** | High-level description of a software feature |
+| **Scenario** | Concrete example illustrating a business rule |
+| **Given** | Preconditions / Initial context |
+| **When** | Event / Action triggered by the user |
+| **Then** | Expected outcome / Result |
+| **And / But** | Connective steps extending previous clauses |
