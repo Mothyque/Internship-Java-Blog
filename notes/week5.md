@@ -223,3 +223,18 @@ public class InventoryEventConsumer {
 ##### Impact on Agile Team Dynamics
 *   **Conflict Resolution:** Addressing misunderstandings early and directly before they escalate into team friction or project delays.
 *   **Psychological Safety:** Contributing to an environment where team members feel comfortable asking questions, admitting mistakes, and sharing innovative ideas.
+
+## Day 5
+
+### Sprint 2 Implementation: Delivery Ingestion & Low-Stock Alerts
+
+#### Important aspects
+
+##### User Story Implementation
+Implemented the `parts-delivered` event consumer within the **Inventory & Procurement** domain to replenish available stock upon purchase order fulfillment and monitor stock replenishment thresholds.
+
+##### Main Principles & Components Implemented
+*   **Event-Driven Delivery Ingestion:** Configured `PartsDeliveredConsumer` to subscribe to the `parts-delivered` Kafka topic emitted by the Procurement domain using `@Incoming("parts-delivered")`.
+*   **Transactional Stock Replenishment:** Updated `inventory_stock.available_quantity` within a `@Transactional` boundary, ensuring atomic updates upon receipt of delivered goods.
+*   **Idempotency & Business Validation:** Enforced event-level idempotency via `eventId` tracking to prevent double-replenishment on retries, paired with custom domain error handling (`BusinessException` with `PART_NOT_FOUND`) for unregistered parts.
+*   **Proactive Low-Stock Monitoring:** Integrated automated threshold checks (`availableQuantity < minimumQuantity`) that conditionally trigger and publish `inventory-low-stock` events to prompt automated procurement workflows.

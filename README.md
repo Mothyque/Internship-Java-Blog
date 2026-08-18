@@ -21,8 +21,8 @@ Below is the complete index of my learning path. Click on any week to explore th
 | **Week 2** | 📝 [Week 2 Notes](notes/week2.md) | Testing & Quality Assurance, Git & Version Control, Design Patterns, ECB Architecture, Java Build Infrastructure, CI/CD, Linux Fundamentals | None | ✅ Completed |
 | **Week 3** | 📝 [Week 3 Notes](notes/week3.md) | Microservices Architecture, Quarkus Framework, Hibernate ORM with Panache, Flyway Database Migrations, Apache Kafka Event Streaming, Agile Project Setup | None | ✅ Completed |
 | **Week 4** | 📝 [Week 4 Notes](notes/week4.md) | Quarkus Reactive & Threading Model, Virtual Threads, Stress Management & Productivity, JPA & Hibernate ORM, Criteria API & JPQL, Event-Driven Architecture, Kafka Consumption & Idempotency | None | ✅ Completed |
-| **Week 5** | 📝 [Week 5 Notes](notes/week5.md) | *Topics to be announced* | ⏳ Pending | 🚧 In Progress |
-| **Week 6** | 📝 [Week 6 Notes](notes/week6.md) | *Topics to be announced* | ⏳ Pending | ⏳ Upcoming |
+| **Week 5** | 📝 [Week 5 Notes](notes/week5.md) | Transaction Management & ACID, Declarative Transactions & Propagation, Optimistic vs. Pessimistic Locking, Monolith vs. Microservices, MicroProfile REST Client, Event-Driven Architecture, Assertive Team Communication, Stock Replenishment & Invariants | None | ✅ Completed |
+| **Week 6** | 📝 [Week 6 Notes](notes/week6.md) | *Topics to be announced* | ⏳ Pending | 🚧 In Progress |
 
 ---
 
